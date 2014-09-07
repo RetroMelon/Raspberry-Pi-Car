@@ -1,0 +1,62 @@
+HOW THE SOFTWARE WORKS
+
+The robot uses the following pieces of software in the following ways:
+
+    node.js - serves the webpage to the user. It also recieves messages about the controls and activates the gpio ports on the raspberry pi accordingly. (access the server over port 8090 by default)
+
+    mjpg-streamer - provides a streaming jpg image which is embedded in the webpage that is served to the user. This allows the user to see through the webcam attached to the robot. (streams over port 8091)
+
+    pi-blaster - allows the node.js server to send PWM signals to the GPIO pins on the raspberry pi. PWM has advantages over simple high and low signals because it allows us to control the speeds of each motor, allowing for dynamic turning/speed changes. It should be noted that if speech synthesis is required, the pi-blaster software should be started in PCM mode as opposed to PWM mode to prevent interference with audio output on the pi. PCM mode is enabled by the startrobot script.
+
+    festival - the node.js server runs bash commands which in turn use festival to synthesize speech.
+
+
+
+PHYSICAL SETUP OF THE ROBOT:
+
+The robot uses 4 GPIO pins for output to the motors, and the ground port on the raspberry pi. The gpio pins used are as follows:
+
+    Right motor - 4, 17
+    Left motor - 22, 23
+
+Trial and error is the easiest way to determine which way round the pins should go to spin the motors in the correct directions.
+
+
+
+SCRIPTS AND THEIR PURPOSES:
+
+There are 4 scripts in the main directory which start all of the software required for the robot to run. They have the following purposes:
+    
+    mjpgserverrunner.sh - runs the mjpgserver. The contents of the script can be altered to change the resolution that the mjpg streams at (default: 320x240)
+    piblasterpcm.sh - changes pi-blaster from PWM to PCM mode so that it doesn't interfere with audio output on the raspberry pi.
+    nodeserverrunner.sh - runs the node.js server with the app nodeserver/app.js.
+    startrobot - this script simply runs all of the other scripts in the correct order. It calls the scripts in the following order: piblasterpcm.sh, mjpgserverrunner.sh, nodeserverrunner.sh
+
+
+
+SOFTWARE INSTALLATION:
+
+All of the install scripts made reference to can be found in the "Installation" folder.
+
+1.  Install node.js and the following modules:
+        socket.io
+        node-static
+        sleep
+        pi-blaster.js
+        optimist
+
+  (Install the raspberry pi specific version from the repo. don't use apt-get - you might run in to compilation problems when installing or using modules.)
+
+  (NOTE: The NODESERVERRUNNER.SH script relies on the node executable being in a specific directory. In your setup the serverrunner script will likely not point to the right place. simply change the appropriate line within the script to point to your node executable.)
+
+2.  Make sure you have autoconf installed (use apt-get). Run the pi-blaster installation script. This will install pi-blaster in to the parent directory in the folder pi-blaster.
+    
+  (NOTE: The PIBLASTERPCM.SH script relies on the pi-blaster executable being in a specific directory /home/pi/pi-blaster/pi-blaster.sh. If it can't be found as this location, change the script to point to the right place.)
+
+3.  Run the mjpgsetup.sh script in the installation folder. It will install the server so it can be accessed system-wide with the command mjpg_streamer. 
+
+4.  to use voice synthesis, install "festival" voice synthesis using apt-get.
+
+5. run ./startrobot to start all software components necessary for the robot to function.
+
+  (NOTE: The startrobot command relies on the password for the current user being "raspberry" (default for a raspberry pi). If it is not this, change te script accordingly.)

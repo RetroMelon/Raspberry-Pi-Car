@@ -1,2 +1,0 @@
-cd nodeserver
-/home/pi/node-v0.10.24-linux-arm-pi/bin/node app.js

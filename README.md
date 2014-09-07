@@ -4,7 +4,7 @@ Raspberry-Pi-Car
 The software used to create a browser-based remote control car with live video and speech synthesis.
 *Ima upload a youtube video demonstrating this robot at some point, yo.*
 
-#How The Software Works
+##How The Software Works
 
 The robot uses the following pieces of software in the following ways:
 
@@ -18,7 +18,7 @@ The robot uses the following pieces of software in the following ways:
 
 
 
-#Physical Setup of the Robot
+##Physical Setup of the Robot
 
 The robot uses 4 GPIO pins for output to the motors, and the ground port on the raspberry pi. The gpio pins used are as follows
 
@@ -46,7 +46,7 @@ There are 4 scripts in the main directory which start all of the software requir
 
 
 
-#Software installation
+##Software installation
 
 All of the install scripts made reference to can be found in the "Installation" folder.
 

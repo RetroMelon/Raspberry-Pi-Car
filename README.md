@@ -2,7 +2,8 @@ Raspberry-Pi-Car
 ================
 
 The software used to create a browser-based remote control car with live video and speech synthesis.
-*Ima upload a youtube video demonstrating this robot at some point, yo.*
+
+This project uses the awesome [virtualjoystick.js](https://github.com/jeromeetienne/virtualjoystick.js) and [jQuery](http://jquery.com/).
 
 ##How The Software Works
 
@@ -32,7 +33,7 @@ Trial and error is the easiest way to determine which way round the pins should 
 
 
 
-#Scripts and Their Purposes
+##Scripts and Their Purposes
 
 There are 4 scripts in the main directory which start all of the software required for the robot to run. They have the following purposes:
 

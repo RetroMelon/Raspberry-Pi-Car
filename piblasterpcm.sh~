@@ -1,4 +1,0 @@
-#replace /home/pi/pi-bla.../pi-blaster with location of pi-blaster executable
-
-echo raspberry | sudo -S /home/pi/pi-blaster-master/pi-blaster stop
-echo raspberry | sudo -S /home/pi/pi-blaster-master/pi-blaster start --pcm

@@ -3,6 +3,8 @@ Raspberry-Pi-Car
 
 The software used to create a browser-based remote control car with joystick control, live video and speech synthesis. A youtube video demonstrating this robot is available at https://www.youtube.com/watch?v=F3hmwtnsWZA.
 
+<img src="http://imgur.com/WngRSn2" alt="Raspberry Pi Car"/>
+
 PS. This project uses the awesome [virtualjoystick.js](https://github.com/jeromeetienne/virtualjoystick.js) and [jQuery](http://jquery.com/) *(Both of which are licensed under the MIT license)*.
 
 ##How The Software Works
